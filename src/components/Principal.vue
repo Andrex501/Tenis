@@ -229,13 +229,13 @@ width: 100%;
 }
 
 .carroespacios{
-margin-top: 75px;
+margin-top: 70px;
 margin-bottom: 20px;
 }
 
 .iconobaloncesto {
-  height: 50px;
-  width: 50px;
+  height: 38px;
+  width: 38px;
 }
 
   }
