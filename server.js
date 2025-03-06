@@ -53,5 +53,5 @@ app.get("/productos", async (req, res) => {
 });
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001;  // Usar el puerto proporcionado por Render
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));

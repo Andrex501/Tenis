@@ -36,7 +36,7 @@ const subirProducto = async () => {
   formData.append("stock", stock.value);
   formData.append("imagen", imagen.value);
 
-  const respuesta = await fetch("http://localhost:5001/productos", {
+  const respuesta = await fetch("https://tenis-7hv3.onrender.com/productos", {
     method: "POST",
     body: formData,
   });
