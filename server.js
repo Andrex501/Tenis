@@ -5,6 +5,7 @@ import dbConexion from "./src/database.js";
 import Producto from "./src/models/Producto.js";
 import multer from "multer";
 import path from "path";
+import { fileURLToPath } from "url";  // Importar fileURLToPath
 
 // Cargar variables de entorno
 dotenv.config();
@@ -15,6 +16,10 @@ const upload = multer({ storage });
 
 // Inicializar la app de Express
 const app = express();
+
+// Obtener el directorio actual del archivo
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); // Crear __dirname con fileURLToPath
 
 // Middlewares
 app.use(cors()); // Permite solicitudes desde otros dominios (útil para frontend separado)
