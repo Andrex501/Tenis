@@ -190,7 +190,7 @@ width: 100%;
 
   .card {
 
-    background-color: #222f3e;
+    background-color: #1e272e;
     width: 18rem; /* Ajusta el tamaño de la tarjeta */
     color: #fff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
