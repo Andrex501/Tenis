@@ -177,7 +177,7 @@ width: 100%;
   }
 
   body {
-    background-color: #000000;
+    background-color: #95a5a6;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
@@ -190,7 +190,7 @@ width: 100%;
 
   .card {
 
-    background-color: #000000;
+    background-color: #222f3e;
     width: 18rem; /* Ajusta el tamaño de la tarjeta */
     color: #fff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
