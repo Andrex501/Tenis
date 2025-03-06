@@ -4,8 +4,6 @@ import dotenv from "dotenv";
 import dbConexion from "./src/database.js";
 import Producto from "./src/models/Producto.js";
 import multer from "multer";
-import path from "path";
-import { fileURLToPath } from "url";  // Importar fileURLToPath
 
 // Cargar variables de entorno
 dotenv.config();
@@ -17,19 +15,12 @@ const upload = multer({ storage });
 // Inicializar la app de Express
 const app = express();
 
-// Obtener el directorio actual del archivo
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); // Crear __dirname con fileURLToPath
-
 // Middlewares
 app.use(cors()); // Permite solicitudes desde otros dominios (útil para frontend separado)
 app.use(express.json({ limit: "10mb" })); // Habilita JSON en las solicitudes con límite de 10MB
 
 // Conectar a MongoDB Atlas
 dbConexion();
-
-// Servir archivos estáticos (el frontend compilado por Vite)
-app.use(express.static(path.join(__dirname, "dist"))); // Asumiendo que los archivos de Vite están en la carpeta dist
 
 // Ruta para agregar un producto con imagen
 app.post("/productos", upload.single("imagen"), async (req, res) => {
