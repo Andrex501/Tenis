@@ -96,7 +96,7 @@
 </div>
 </center>
 
-<br><br><br>
+<br><br>
 
 
 <div class="cards-container">
@@ -128,7 +128,8 @@
         <center>
           <div>
             {{ producto.nombre }} <br />
-            {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }}
+            {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }} <br>
+            {{ producto.stock }} Unidades Disponibles
           </div>
         </center>
       </div>
@@ -159,7 +160,7 @@
 
 
 .carrouno{
-height: 580px;
+height: 600px;
 width: 100%;
 }
 
@@ -222,6 +223,7 @@ width: 100%;
 height: 300px;
 width: 100%;
 }
+
   }
 
 
