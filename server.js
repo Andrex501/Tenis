@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import dbConexion from "./src/database.js";
 import Producto from "./src/models/Producto.js";
 import multer from "multer";
+import path from "path";
 
 // Cargar variables de entorno
 dotenv.config();
@@ -21,6 +22,9 @@ app.use(express.json({ limit: "10mb" })); // Habilita JSON en las solicitudes co
 
 // Conectar a MongoDB Atlas
 dbConexion();
+
+// Servir archivos estáticos (el frontend compilado por Vite)
+app.use(express.static(path.join(__dirname, "dist"))); // Asumiendo que los archivos de Vite están en la carpeta dist
 
 // Ruta para agregar un producto con imagen
 app.post("/productos", upload.single("imagen"), async (req, res) => {
@@ -53,5 +57,5 @@ app.get("/productos", async (req, res) => {
 });
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 5001;  // Usar el puerto proporcionado por Render
+const PORT = process.env.PORT || 10000;  // Usar el puerto proporcionado por Render
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
