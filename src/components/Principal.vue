@@ -5,13 +5,16 @@
     <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" style="font-size: 30px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
-    href="#">SNEAKERS KENI</a>
+    href="#">SNEAKERS KENI <img src="../assets/baloncesto.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="offcanvas-title" id="offcanvasDarkNavbarLabel">¿TE GUSTÓ ALGUN MODEDELO?⬇</h5>
+        <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+    
+          ¡CONTACTANOS! <img  src="../assets/baloncesto.png" alt="">
+        </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -69,11 +72,11 @@
   </div>
 </nav>
 
-<br><br><br>
+
 
 
 <center>
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleAutoplaying" class="carousel slide carroespacios" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="../assets/nikeuno.jpg" class="carrouno d-block w-90" alt="...">
@@ -96,13 +99,10 @@
 </div>
 </center>
 
-<br><br>
+
 
 
 <div class="cards-container">
-
-
-
 
 
  
@@ -129,7 +129,7 @@
           <div>
             {{ producto.nombre }} <br />
             {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }} <br>
-            {{ producto.stock }} Unidades Disponibles
+           Stock {{ producto.stock }}
           </div>
         </center>
       </div>
@@ -158,9 +158,13 @@
 
 <style>
 
+.carroespacios{
+margin-top: 70px;
+margin-bottom: 40px;
+}
 
 .carrouno{
-height: 600px;
+height: 620px;
 width: 100%;
 }
 
@@ -220,8 +224,13 @@ width: 100%;
     }
 
     .carrouno{
-height: 300px;
+height: 280px;
 width: 100%;
+}
+
+.carroespacios{
+margin-top: 70px;
+margin-bottom: 20px;
 }
 
   }
