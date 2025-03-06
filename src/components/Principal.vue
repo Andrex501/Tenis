@@ -5,7 +5,7 @@
     <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" style="font-size: 30px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
-    href="#">SNEAKERS KENI <img src="../assets/baloncesto.png" alt=""></a>
+    href="#">SNEAKERS KENI <img class="iconobaloncesto" src="../assets/baloncesto.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -159,7 +159,7 @@
 <style>
 
 .carroespacios{
-margin-top: 70px;
+margin-top: 90px;
 margin-bottom: 40px;
 }
 
@@ -229,8 +229,13 @@ width: 100%;
 }
 
 .carroespacios{
-margin-top: 70px;
+margin-top: 75px;
 margin-bottom: 20px;
+}
+
+.iconobaloncesto {
+  height: 50px;
+  width: 50px;
 }
 
   }
