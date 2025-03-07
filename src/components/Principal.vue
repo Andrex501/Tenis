@@ -334,7 +334,7 @@ const productos = ref([]);
 // Función para obtener los productos desde la API
 const obtenerProductos = async () => {
   try {
-    const respuesta = await axios.get("https://tenis-7hv3.onrender.com/productos");
+    const respuesta = await axios.get("https://keni-sneakers.onrender.com/productos");
 
     // Agregar la propiedad 'cargando' a cada producto para que sea reactiva
     productos.value = respuesta.data.map((producto) => ({
