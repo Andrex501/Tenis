@@ -128,7 +128,7 @@
         <center>
           <div>
             {{ producto.nombre.toUpperCase() }} <br>
-            {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }}
+            <!-- {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }} -->
           </div>
         </center>
       </div>
@@ -190,7 +190,7 @@ width: 70%;
   .card {
 
     background-color: #1e272e;
-    height: 30rem;
+    height: 28rem;
     width: 18rem; /* Ajusta el tamaño de la tarjeta */
     color: #fff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -215,7 +215,7 @@ width: 70%;
     }
 
     .card {
-      height: 23rem;
+      height: 21rem;
       width: 100%; /* Asegura que las tarjetas se ajusten al ancho de su contenedor */
     }
 
