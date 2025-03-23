@@ -5,7 +5,7 @@
     <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" style="font-size: 30px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
-    href="#">KENI SNEAKERS <img class="iconobaloncesto" src="../assets/baloncesto.png" alt=""></a>
+    href="#">KeniSneakers<img class="iconobaloncesto" src="../assets/baloncesto.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -99,51 +99,58 @@
 </div>
 </center>
 
+<br>
 
+<center>
+      <select
+        class="filtro form-select form-select-lg mb-3"
+        aria-label="Large select example"
+        v-model="marcaSeleccionada"
+      >
+        <option value="">👆🏽 Todos los KeniSneakers</option>
+        <option v-for="marca in marcasUnicas" :key="marca" :value="marca">
+         Solo {{ marca }}
+        </option>
+      </select>
+</center>
 
+<br>
 
-<div class="cards-container">
-
-
- 
-  <div v-for="producto in productos" :key="producto._id">
-    <div class="card">
-      <!-- Spinner mientras la imagen carga -->
-      <div v-if="producto.cargando" class="spinner-container">
-        <div class="spinner-border text-light" role="status">
-          <span class="visually-hidden">Loading...</span>
+    <div class="cards-container">
+      <div v-for="producto in productosFiltrados" :key="producto._id">
+        <div class="card">
+          <div v-if="producto.cargando" class="spinner-container">
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <img
+            v-show="!producto.cargando"
+            :src="producto.imagen"
+            class="card-img-top"
+            alt="Producto"
+            @load="producto.cargando = false"
+          />
+          <div class="card-body">
+            <center>
+              <div>
+                <div style="font-size: 20px">
+                  {{ producto.nombre.toUpperCase() }}
+                </div>
+                <br />
+                {{
+                  new Intl.NumberFormat("es-CO", {
+                    style: "currency",
+                    currency: "COP",
+                  }).format(producto.precio)
+                }}
+              </div>
+            </center>
+          </div>
         </div>
       </div>
-
-      <!-- Imagen del producto -->
-      <img
-        v-show="!producto.cargando"
-        :src="producto.imagen"
-        class="card-img-top"
-        alt="Producto"
-        @load="producto.cargando = false"
-      />
-
-      <div class="card-body">
-        <center>
-          <div>
-            {{ producto.nombre.toUpperCase() }} <br>
-            <!-- {{ new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP" }).format(producto.precio) }} -->
-          </div>
-        </center>
-      </div>
     </div>
-  </div>
-
-
-
-
-
-
-
- 
-</div>
-<br><br>
+    <br /><br />
     
 
 
@@ -157,6 +164,7 @@
 
 <style>
 
+
 .carroespacios{
 margin-top: 90px;
 margin-bottom: 30px;
@@ -167,8 +175,9 @@ height: 500px;
 width: 70%;
 }
 
-
-/* ..... */
+.filtro{
+  width: 83%;
+}
 
   .imagenkeni {
     height: 60vh;
@@ -190,7 +199,7 @@ width: 70%;
   .card {
 
     background-color: #1e272e;
-    height: 28rem;
+    height: 100%;
     width: 18rem; /* Ajusta el tamaño de la tarjeta */
     color: #fff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -215,7 +224,7 @@ width: 70%;
     }
 
     .card {
-      height: 21rem;
+      height: 100%;
       width: 100%; /* Asegura que las tarjetas se ajusten al ancho de su contenedor */
     }
 
@@ -237,6 +246,11 @@ margin-bottom: 20px;
 .iconobaloncesto {
   height: 38px;
   width: 38px;
+}
+
+.filtro{
+  width: 100%;
+  font-size: 20px;
 }
 
   }
@@ -326,29 +340,39 @@ margin-bottom: 20px;
 
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import axios from "axios";
 
 const productos = ref([]);
+const marcaSeleccionada = ref("");
 
-
-// Función para obtener los productos desde la API
 const obtenerProductos = async () => {
   try {
     const respuesta = await axios.get("https://keni-sneakers.onrender.com/productos");
-
-    // Agregar la propiedad 'cargando' a cada producto para que sea reactiva
-    productos.value = respuesta.data.map((producto) => ({
-      ...producto,
-      cargando: true, // Inicia en "cargando"
-    }));
-
+    productos.value = respuesta.data;
   } catch (error) {
     console.error("Error al obtener productos", error);
   }
 };
 
-// Ejecutar la función al montar el componente
-onMounted(obtenerProductos);
+const marcasUnicas = computed(() => {
+  const marcas = productos.value.map((producto) => producto.marca);
+  return [...new Set(marcas)];
+});
 
+const productosFiltrados = computed(() => {
+  if (!marcaSeleccionada.value) {
+    return productos.value;
+  } else {
+    return productos.value.filter(
+      (producto) => producto.marca === marcaSeleccionada.value
+    );
+  }
+});
+
+const mostrarTodos = () => {
+  marcaSeleccionada.value = "";
+};
+
+onMounted(obtenerProductos);
 </script>

@@ -34,11 +34,12 @@ dbConexion();
 // Ruta para agregar un producto con imagen
 app.post("/productos", upload.single("imagen"), async (req, res) => {
     try {
-        const { nombre, precio, stock } = req.body;
+        const { nombre, marca, precio, stock } = req.body;
         const imagenBase64 = req.file.buffer.toString("base64"); // Convertir imagen a Base64
 
         const nuevoProducto = new Producto({
             nombre,
+            marca,
             precio,
             stock,
             imagen: `data:image/jpeg;base64,${imagenBase64}`,
@@ -52,7 +53,6 @@ app.post("/productos", upload.single("imagen"), async (req, res) => {
     }
 });
 
-// Ruta para obtener todos los productos
 app.get("/productos", async (req, res) => {
     try {
         const productos = await Producto.find();
@@ -63,11 +63,9 @@ app.get("/productos", async (req, res) => {
     }
 });
 
-// Catch-all route para servir la aplicación frontend (DEBE IR DESPUÉS DE LAS RUTAS DE LA API)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Iniciar el servidor
 const PORT = process.env.PORT || 10000;  // Usar el puerto proporcionado por Render
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
