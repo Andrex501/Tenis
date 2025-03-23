@@ -101,7 +101,7 @@
             <div class="card-body">
               <center>
                 <div>
-                  <div style="font-size: 20px">
+                  <div class="nombreproducto">
                     {{ producto.nombre.toUpperCase() }}
                   </div>
                   <br />
@@ -183,6 +183,10 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.nombreproducto{
+  font-size: 20px;
+}
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -241,6 +245,11 @@ body {
     width: 100%;
     font-size: 20px;
   }
+
+  .nombreproducto{
+  font-size: 15px;
+}
+
 }
 
 /* From Uiverse.io by NelsonDJCR */
