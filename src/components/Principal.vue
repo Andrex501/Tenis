@@ -179,7 +179,7 @@
 }
 
 body {
-  background-color: #a4b0be;
+  background-color: #000000;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
